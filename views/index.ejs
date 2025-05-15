@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Inscriptions Pédagogiques - UGB</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="image/logo_UGB.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Bienvenue dans la page d'accueil</div>
+            <div class="logo-container" id="logofsy"></div>
+        </nav>
+    </header>
+    <button class="notification-btn" id="notifBtn" onclick="window.location.href='info'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+        <span class="notification-count"><%= nb_info %></span>
+        <span class="notification-text">Informations</span>
+    </button>
+    <main>
+        <section class="hero">
+            <img src="image/logo_UGB.png" alt="">
+            <h1>Plateforme d'Inscriptions Pédagogiques</h1>
+            <h1>UFR SAT</h1>
+            <h2>Université Gaston Berger de Saint-Louis</h2>
+            <p>Gérez vos inscriptions et consultez vos groupes de TD/TP en quelques clics</p>
+            <div class="cta-buttons">
+                <a href="/login" class="btn primary">S'inscrire ou Se connecter</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Nos Services</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>Inscription en ligne</h3>
+                    <p>Inscrivez-vous facilement aux cours et aux filières de votre choix</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Groupes TD/TP</h3>
+                    <p>Consultez et rejoignez vos groupes de travaux dirigés et pratiques</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Suivi académique</h3>
+                    <p>Suivez votre situation académique en temps réel</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Communication</h3>
+                    <p>Restez informé des décisions et exigences académiques</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

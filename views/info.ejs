@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste d'Informations</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="image/logo_UGB.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">LI</div>
+                <div class="logo-text">Liste Infos</div>
+            </div>
+            <!-- <div class="logo-container" id="logofsy"></div> -->
+        </nav>
+    </header>
+    <main class="main-content">
+        <section class="hero">
+            <img src="image/logo_UGB.png" alt="">
+            <h1>UFR SAT</h1>
+            <h2>Unité de Formation et de Recherche de Sciences Appliquées et de Technologies</h2>
+            <p>Consultez les nouvelles informations: Date d'évaluations, heures supplémentaires, avis aux étudiants, etc.</p>
+            <div class="cta-buttons">
+                <a href="/" class="btn primary">Retouner à la page d'accueil</a>
+            </div>
+        </section>
+        <section class="features">
+            <h2>Liste des Informations</h2>
+            <div class="feature-grid" id="listInfo">
+                <div class="info_empty">
+                    <h3>Aucune information</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        async function infoList() {
+            const infos = await fetch('/api/info').then(r => r.json());
+            if(infos) {
+                document.getElementById('listInfo').innerHTML = infos
+                .map(info => `
+                    <div class="feature-item info">
+                        <h3>${info.concerne}</h3>
+                        <p>${info.contenu}</p>
+                        <p class="activity-time">Publié le : ${info.date_envoie}</p>
+                    </div>
+                `).join('');
+            }
+        }
+        infoList();
+    </script>
+</body>
+</html>

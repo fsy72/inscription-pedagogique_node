@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Styles pour la page de connexion/inscription */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(30deg, #adc4ad, #3e469b, #1a237e);
+    background-size: 300% 300%;
+    animation: moveBackground 15s ease infinite;
+}
+@keyframes moveBackground {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+.auth-form {
+    background: #ffffff36;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 7px 7px 7px #0000008f,
+    -10px -10px 10px #ffffff0d;
+    width: 300px;
+    text-align: center;
+}
+img {
+    width: 15%;
+}
+.auth-form h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+}
+.auth-form input:focus {
+    outline: 0;
+}
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #1a237e;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.auth-form button:hover {
+    background: #2d347b;
+}
+.auth-form p {
+    margin-top: 10px;
+    color: #ffffff;
+}
+.auth-form a {
+    color: #1a237e;
+    text-decoration: none;
+    cursor: pointer;
+}
+.auth-form a:hover {
+    text-decoration: underline;
+}
+.erreur-auth {
+    background: #ffa6004b;
+    color: white;
+    border: 1px solid orange;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+span {
+    display: none;
+    color: orange;
+    margin-bottom: 3px;
+    padding: 5px 0;
+    border: 1px solid orange;
+    background: rgba(255, 166, 0, 0.249);
+}
+
+#messageError {
+    text-align: center;
+    font-size: 121%;
+    margin-bottom: 3px;
+    position: absolute;
+    top: 3%;
+    color: orangered;
+    background: #ffa6003f;
+}

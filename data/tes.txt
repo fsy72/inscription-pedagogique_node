@@ -1,0 +1,24 @@
+Un utilisateur est soit un administrateur ou un étudiant.
+Un étudiant s'inscrit à une date et ne s'inscrit une seule fois.
+Un étudiant s'inscrit dans une ou plusieurs matières.
+Un étudiant est dans un et un seul niveau (licence 1, licence 2, licence 3, master 1, master 2)
+en même temps et chaque niveau a au maximum 2 semestre.
+Licence 1: semestre 1 et semestre 2,
+Licence 2: semestre 3 et semestre 4,
+Licence 3: semestre 5 et semestre 6,
+Master 1: semestre 7 et semestre 8,
+Master 2: semestre 9 et semestre 10
+Une matière se trouver dans un seule semestre pour un niveau, mais une matière peut se trouver 
+dans deux semestres pour un niveau différent.
+Une formation peut être dans un ou plusieurs semestre.
+Un administrateur gère les inscriptions, confirme les inscriptions des étudiants inscrits.
+Un administrateur peut envoyer plusieurs messages à un étudiant et étudiant reçoit une ou plusieurs
+messages. L'inscription d'un étudiant est soit confirmer ou pas.
+La base de données doit nous permettre de lister tous les étudiants dans un niveau donné, tous les 
+étudiants dans un niveau et formation donné, tous les étudiant en passage conditionnelle, 
+tous les matières dans un niveau, tous les messages non luts par un étudiant donné, tous les étudiants 
+en attente de confirmation d'inscription, tous les étudiants inscrits.
+Un étudiant en passage conditionnelle est un étudiant qui est dans un niveau (sauf licence 1) est qui 
+n'a pas validé une(des) matière(s) dans le niveau précédent, il doit donc s'inscrire dans cette(ces) 
+matière(s).
+Faire le MCD correspondant avec Draw.io

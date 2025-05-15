@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion / Inscription</title>
+    <link rel="stylesheet" href="/css/auths.css">
+    <link rel="icon" type="image/png" href="image/logo_UGB.png">
+</head>
+<body>
+    <div class="auth-container">
+        <div id="messageError"><%= error %></div>
+        <div class="auth-form" id="login-form">
+            <img src="image/icons/login.svg" alt="">
+            <h2>Connexion</h2>
+            <form method="POST" action="login" id="login">
+                <span id="email-login-error">format "mon.exemple@ugb.edu.sn"</span>
+                <input type="text" name="email" id="email-login" placeholder="Email" required>
+                <span id="password-login-error">Le mot de passe doit contenir au moins 8 caractères</span>
+                <input type="password" name="password" id="password-login" placeholder="Mot de passe" required autocomplete="off">
+                <button type="button" onclick="submitLoginForm()">Se connecter</button>
+            </form>
+            <div class="erreur-auth" id="erreur-login" style="display: none;">
+                <h1>!!!</h1>
+                <p>
+                    Ce nom d'utilisateur existe déjà.
+                    Réessayez avec un autre nom.
+                </p>
+            </div>
+            <p>Vous ne vous êtes pas encore connecté ? <a onclick="showRegister()">S'inscrire</a></p>
+        </div>
+
+        <div class="auth-form" id="register-form" style="display: none;">
+            <img src="image/icons/login.svg" alt="">
+            <h2>Inscription</h2>
+            <form method="POST" action="register" id="register">
+                <input type="text" name="name" placeholder="Votre prénom" required>
+                <input type="text" name="lastName" placeholder="Votre nom" required>
+                <span id="email-register-error">format "mon.exemple@ugb.edu.sn"</span>
+                <input type="text" name="email" id="email-register" placeholder="Email" required>
+                <span id="password-register-error">Le mot de passe doit contenir au moins 8 caractères</span>
+                <input type="password" name="password" id="password-register" placeholder="Mot de passe" required autocomplete="off">
+                <span id="password-confirm">Mot de passe différent</span>
+                <input type="password" id="confirm" placeholder="Confirmer le mot de passe" required autocomplete="off">
+                <button type="button" onclick="submitRegisterForm()">S'inscrire</button>
+            </form>
+            <div class="erreur-auth" id="erreur-register" style="display: none;">
+                <h1>!!!</h1>
+                <p>
+                    Ce nom d'utilisateur existe déjà.
+                    Réessayez avec un autre nom ou vous connecter avec ce nom.
+                </p>
+            </div>
+            <p>Déjà connecté ? <a onclick="showLogin()">Se connecter</a></p>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>

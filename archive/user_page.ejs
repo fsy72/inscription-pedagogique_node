@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription Pédagogique</title>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="icon" type="image/png" href="image/logo_UGB.png">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar / Menu latéral -->
+        <div class="sidebar collapsed" id="sidebar">
+            <div class="sidebar-header">
+                <button class="toggle-btn" id="toggleBtn">
+                    <!-- <i class="fas fa-bars"></i> -->
+                    <img src="image/icons/menu.svg" alt="">
+                </button>
+                <!-- <h1 class="sidebar-title">Inscription Pédagogique</h1> -->
+                <div class="logo-container" id="logofsy"></div>
+            </div>
+            <div class="sidebar-menu">
+                <div>
+                    <a href="#" class="menu-item active" id="bnt-form" data-section="formulaire">
+                        <!-- <i class="fas fa-clipboard-list"></i> -->
+                        <img src="image/icons/stylus.svg" alt="">
+                        <span class="menu-text">Formulaire</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="groupe">
+                        <!-- <i class="fas fa-users"></i> -->
+                        <img src="image/icons/groups.svg" alt="">
+                        <span class="menu-text">Mon Groupe TD</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="menu-item" data-section="deconnexion">
+                        <!-- <i class="fas fa-sign-out-alt"></i> -->
+                        <img src="image/icons/logout.svg" alt="">
+                        <span class="menu-text">Se Déconnecter</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="profil">
+                        <!-- <i class="fas fa-user"></i> -->
+                        <img src="image/icons/person.svg" alt="">
+                        <span class="menu-text"><%= name %> <%= lastName %></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenu principal -->
+        <div class="main-content" id="mainContent">
+            <div class="header">
+                <!-- <h2>Bienvenue sur la plateforme d'inscription pédagogique</h2> -->
+                <h2>UFR SAT</h2>
+            </div>
+
+            <!-- Section Formulaire -->
+            <div class="section active" id="formulaire">
+                <h2 class="section-title">Remplir le formulaire d'inscription</h2>
+                <form id="inscription-form">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" value="<%= lastName %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" value="<%= name %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Numéro étudiant</label>
+                        <input type="text" id="numero" name="numero" value="<%= code_admin %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formation">Formation</label>
+                        <select id="formation" name="formation" required>
+                            <option value="">-- Sélectionnez votre formation --</option>
+                            <option value="l1">Licence 1</option>
+                            <option value="l2">Licence 2</option>
+                            <option value="l3">Licence 3</option>
+                            <option value="m1">Master 1</option>
+                            <option value="m2">Master 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parcours">Parcours</label>
+                        <select id="parcours" name="parcours" required>
+                            <option value="">-- Sélectionnez votre parcours --</option>
+                            <option value="info">Informatique</option>
+                            <option value="math">Mathématiques</option>
+                            <option value="eco">Économie</option>
+                            <option value="droit">Droit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="groupe">Préférence de groupe</label>
+                        <select id="groupe" name="groupe">
+                            <option value="">-- Sélectionnez votre préférence de groupe --</option>
+                            <option value="g1">Groupe 1 (Lundi matin)</option>
+                            <option value="g2">Groupe 2 (Mardi après-midi)</option>
+                            <option value="g3">Groupe 3 (Jeudi matin)</option>
+                            <option value="g4">Groupe 4 (Vendredi après-midi)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Soumettre l'inscription</button>
+                </form>
+            </div>
+
+            <!-- Section Groupe TD -->
+            <div class="section" id="groupe">
+                <h2 class="section-title">Mon Groupe de TD</h2>
+                <div class="td-info">
+                    <h3>Groupe 3 - Jeudi matin</h3>
+                    <p><strong>Responsable :</strong> Mme Dubois</p>
+                    <p><strong>Email :</strong> dubois@universite.fr</p>
+                    <p><strong>Salle :</strong> B204</p>
+                    <p><strong>Horaires :</strong> Jeudi 8h30 - 10h30</p>
+                </div>
+                <h3>Participants du groupe</h3>
+                <ul>
+                    <li>Martin Dupont</li>
+                    <li>Thomas Moreau</li>
+                    <li>Sophie Leroy</li>
+                    <li>Hugo Bernard</li>
+                    <li>...</li>
+                </ul>
+            </div>
+
+            <!-- Section Profil -->
+            <div class="section" id="profil">
+                <h2 class="section-title">Mon Profil</h2>
+                <div class="avatar">
+                    <!-- <i class="fas fa-user"></i> -->
+                    <img src="image/icons/person.svg" alt="photo de profil" style="width: 100%;">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-field">
+                        <div class="profile-label">Nom :</div>
+                        <div class="profile-value"><%= lastName %></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Prénom :</div>
+                        <div class="profile-value"><%= name %></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Numéro étudiant :</div>
+                        <div class="profile-value"><%= code_admin %></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Email :</div>
+                        <div class="profile-value"><!--marie.dupont@etudiant.fr--></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Date de naissance :</div>
+                        <div class="profile-value"><!--marie.dupont@etudiant.fr--></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Adress :</div>
+                        <div class="profile-value"><!--marie.dupont@etudiant.fr--></div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Formation :</div>
+                        <div class="profile-value">Licence 3</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-label">Parcours :</div>
+                        <div class="profile-value">Informatique</div>
+                    </div>
+                </div>
+                <button class="btn" style="margin-top: 20px;" onclick="document.getElementById('bnt-form').click()">Modifier mon profil</button>
+            </div>
+
+            <!-- Section Déconnexion -->
+            <div class="section" id="deconnexion">
+                <h2 class="section-title">Se Déconnecter</h2>
+                <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+                <button class="btn" style="margin-top: 20px;" onclick="window.location.href = 'index'">Confirmer la déconnexion</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/user_script.js"></script>
+</body>
+</html>

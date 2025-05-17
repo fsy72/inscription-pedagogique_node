@@ -1,3 +1,29 @@
+const profil = document.getElementById('profil');
+const body = document.querySelector('body');
+const container_profil = document.getElementById('container-profil');
+const menuToggleRepli = document.querySelector('.menu-toggle-repli');
+
+profil.addEventListener('click', (e) => {
+    e.stopPropagation();
+    
+    profil.style.display = 'none';
+    body.style.overflow = 'scroll';
+});
+container_profil.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+function containerProfil() {
+    profil.style.display = 'flex';
+    body.style.overflow = 'hidden';
+    menuToggleRepli.click();
+}
+
+function afficheInput(nameInput) {
+    document.getElementById(nameInput).disabled = false;
+    document.getElementById(nameInput).style.backgroundColor = '#e2e8f0c9';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuItems = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
@@ -25,16 +51,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Menu toggle functionality
 const menuToggle = document.querySelector('.menu-toggle');
-const menuToggleRepli = document.querySelector('.menu-toggle-repli');
 const sidebar = document.querySelector('.sidebar');
+const main_content = document.querySelector('.main-content');
+// const header = document.querySelector('.header');
 
 if(menuToggle && sidebar) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         sidebar.classList.toggle('active');
     });
     menuToggleRepli.addEventListener('click', () => {
         sidebar.classList.remove('active');
     });
+    main_content.addEventListener('click', (e) => {
+        e.stopPropagation();
+        sidebar.classList.remove('active');
+    });
+    // header.addEventListener('click', (e) => {
+    //     e.stopPropagation();
+    // });
     
     // Close sidebar when clicking outside on mobile
     // document.addEventListener('click', (e) => {
@@ -123,112 +158,112 @@ if(notificationBtn) {
 
 // Add charts for visualization
 // Create and append a canvas element for the chart
-const dashboardGrid = document.querySelector('.dashboard-grid');
-if (dashboardGrid) {
-    // Add a chart card
-    const chartCard = document.createElement('div');
-    chartCard.className = 'card';
-    chartCard.style.gridColumn = '1 / -1';
-    chartCard.innerHTML = `
-        <div class="card-header">
-            <h2 class="card-title">Aperçu des dépenses</h2>
-            <div>
-                <select id="chartPeriod" style="padding: 0.3rem 0.5rem; border-radius: var(--border-radius); border: 1px solid #e2e8f0;">
-                    <option value="week">Cette semaine</option>
-                    <option value="month" selected>Ce mois</option>
-                    <option value="year">Cette année</option>
-                </select>
-            </div>
-        </div>
-        <div style="height: 300px; margin-top: 1rem;">
-            <canvas id="expenseChart"></canvas>
-        </div>
-    `;
+// const dashboardGrid = document.querySelector('.dashboard-grid');
+// if (dashboardGrid) {
+//     // Add a chart card
+//     const chartCard = document.createElement('div');
+//     chartCard.className = 'card';
+//     chartCard.style.gridColumn = '1 / -1';
+//     chartCard.innerHTML = `
+//         <div class="card-header">
+//             <h2 class="card-title">Aperçu des dépenses</h2>
+//             <div>
+//                 <select id="chartPeriod" style="padding: 0.3rem 0.5rem; border-radius: var(--border-radius); border: 1px solid #e2e8f0;">
+//                     <option value="week">Cette semaine</option>
+//                     <option value="month" selected>Ce mois</option>
+//                     <option value="year">Cette année</option>
+//                 </select>
+//             </div>
+//         </div>
+//         <div style="height: 300px; margin-top: 1rem;">
+//             <canvas id="expenseChart"></canvas>
+//         </div>
+//     `;
     
-    // Insert chart card after dashboard stats
-    dashboardGrid.insertAdjacentElement('afterend', chartCard);
+//     // Insert chart card after dashboard stats
+//     dashboardGrid.insertAdjacentElement('afterend', chartCard);
     
-    // Load Chart.js from CDN
-    const chartScript = document.createElement('script');
-    chartScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js';
-    document.head.appendChild(chartScript);
+//     // Load Chart.js from CDN
+//     const chartScript = document.createElement('script');
+//     chartScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js';
+//     document.head.appendChild(chartScript);
     
-    // Initialize chart when script is loaded
-    chartScript.onload = function() {
-        const ctx = document.getElementById('expenseChart').getContext('2d');
+//     // Initialize chart when script is loaded
+//     chartScript.onload = function() {
+//         const ctx = document.getElementById('expenseChart').getContext('2d');
         
-        // Sample data
-        const chartData = {
-            labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
-            datasets: [{
-                label: 'Dépenses',
-                data: [1200, 1900, 1500, 2200, 1800, 2400],
-                backgroundColor: 'rgba(67, 97, 238, 0.2)',
-                borderColor: 'rgba(67, 97, 238, 1)',
-                borderWidth: 2,
-                tension: 0.4,
-                pointBackgroundColor: 'rgba(67, 97, 238, 1)',
-            }]
-        };
+//         // Sample data
+//         const chartData = {
+//             labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+//             datasets: [{
+//                 label: 'Dépenses',
+//                 data: [1200, 1900, 1500, 2200, 1800, 2400],
+//                 backgroundColor: 'rgba(67, 97, 238, 0.2)',
+//                 borderColor: 'rgba(67, 97, 238, 1)',
+//                 borderWidth: 2,
+//                 tension: 0.4,
+//                 pointBackgroundColor: 'rgba(67, 97, 238, 1)',
+//             }]
+//         };
         
-        // Chart options
-        const chartOptions = {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0, 0, 0, 0.05)',
-                    }
-                },
-                x: {
-                    grid: {
-                        display: false,
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false,
-                }
-            }
-        };
+//         // Chart options
+//         const chartOptions = {
+//             responsive: true,
+//             maintainAspectRatio: false,
+//             scales: {
+//                 y: {
+//                     beginAtZero: true,
+//                     grid: {
+//                         color: 'rgba(0, 0, 0, 0.05)',
+//                     }
+//                 },
+//                 x: {
+//                     grid: {
+//                         display: false,
+//                     }
+//                 }
+//             },
+//             plugins: {
+//                 legend: {
+//                     display: false,
+//                 }
+//             }
+//         };
         
-        // Create chart
-        const expenseChart = new Chart(ctx, {
-            type: 'line',
-            data: chartData,
-            options: chartOptions
-        });
+//         // Create chart
+//         const expenseChart = new Chart(ctx, {
+//             type: 'line',
+//             data: chartData,
+//             options: chartOptions
+//         });
         
-        // Update chart based on period selection
-        const chartPeriod = document.getElementById('chartPeriod');
-        chartPeriod.addEventListener('change', function() {
-            let newLabels = [];
-            let newData = [];
+//         // Update chart based on period selection
+//         const chartPeriod = document.getElementById('chartPeriod');
+//         chartPeriod.addEventListener('change', function() {
+//             let newLabels = [];
+//             let newData = [];
             
-            switch(this.value) {
-                case 'week':
-                    newLabels = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-                    newData = [320, 450, 280, 550, 490, 680, 420];
-                    break;
-                case 'month':
-                    newLabels = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'];
-                    newData = [1200, 1900, 1500, 2200, 1800, 2400];
-                    break;
-                case 'year':
-                    newLabels = ['2024', '2025'];
-                    newData = [12500, 15800];
-                    break;
-            }
+//             switch(this.value) {
+//                 case 'week':
+//                     newLabels = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+//                     newData = [320, 450, 280, 550, 490, 680, 420];
+//                     break;
+//                 case 'month':
+//                     newLabels = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'];
+//                     newData = [1200, 1900, 1500, 2200, 1800, 2400];
+//                     break;
+//                 case 'year':
+//                     newLabels = ['2024', '2025'];
+//                     newData = [12500, 15800];
+//                     break;
+//             }
             
-            expenseChart.data.labels = newLabels;
-            expenseChart.data.datasets[0].data = newData;
-            expenseChart.update();
-        });
-    };
-}
+//             expenseChart.data.labels = newLabels;
+//             expenseChart.data.datasets[0].data = newData;
+//             expenseChart.update();
+//         });
+//     };
+// }
 
 // Add upcoming events section
 const activityFeed = document.querySelector('.activity-feed');

@@ -85,8 +85,8 @@
                 </li>
             </ul>
 
-            <div class="user-profile">
-                <div class="user-avatar">JD</div>
+            <div class="user-profile" onclick="containerProfil()">
+                <div class="user-avatar"><img src="image/icons/person.svg" alt=""></div>
                 <div class="user-info">
                     <div class="user-name"><%= name %> <%= lastName %></div>
                     <div class="user-role">Utilisateur Premium</div>
@@ -172,20 +172,6 @@
                 </div>
             </div>
 
-            <!-- section profil -->
-            <div class="section" id="profil">
-                <div class="card stat-card disconnect" onclick="window.location.href = '/'">
-                    <div class="stat-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4361ee">
-                            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
-                        </svg>
-                    </div>
-                    <div class="stat-info">
-                        <h3>Se déconnecter</h3>
-                    </div>
-                </div>
-            </div>
-
             <!-- Activity Feed -->
             <div class="section" id="parametre">
             </div>
@@ -263,6 +249,42 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <!-- section profil -->
+    <div id="profil">
+        <div id="container-profil">
+            <div>
+                <div class="logo-icon"><img src="image/icons/person.svg" alt=""></div>
+                <!-- <div class="logo-text">Profil</div> -->
+            </div>
+            <form action="/update/profil" method="post">
+                <label for="name">Prenom</label>
+                <div>
+                    <input type="text" name="name" id="name" value="<%= name %>" disabled>
+                    <svg onclick="afficheInput('name')" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="black">
+                        <path d="M167-120q-21 5-36.5-10.5T120-167l40-191 198 198-191 40Zm191-40L160-358l458-458q23-23 57-23t57 23l84 84q23 23 23 57t-23 57L358-160Zm317-600L261-346l85 85 414-414-85-85Z"/>
+                    </svg>
+                </div>
+                <label for="lastName">Nom</label>
+                <div>
+                    <input type="text" name="lastName" id="lastName" value="<%= lastName %>" disabled>
+                    <svg onclick="afficheInput('lastName')" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="black">
+                        <path d="M167-120q-21 5-36.5-10.5T120-167l40-191 198 198-191 40Zm191-40L160-358l458-458q23-23 57-23t57 23l84 84q23 23 23 57t-23 57L358-160Zm317-600L261-346l85 85 414-414-85-85Z"/>
+                    </svg>
+                </div>
+                <input type="submit" value="Modifier">
+            </form>
+            <div class="disconnect" onclick="window.location.href = '/'">
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#f87171">
+                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/>
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <h3>Se déconnecter</h3>
+                </div>
             </div>
         </div>
     </div>

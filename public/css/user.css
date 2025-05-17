@@ -5,6 +5,7 @@
     --success-color: #4ade80;
     --warning-color: #fbbf24;
     --danger-color: #f87171;
+    --danger-background-color: #f8717114;
     --text-color: #333;
     --text-light: #64748b;
     --bg-color: #f8fafc;
@@ -116,6 +117,14 @@ body {
     padding: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     margin-top: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    border-radius: 5px;
 }
 
 .user-avatar {
@@ -248,7 +257,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.card:hover, #profil form input[type="submit"]:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -288,16 +297,99 @@ body {
 .section.active {
     display: block;
 }
-#profil .card.disconnect {
+#profil {
+    display: none;
+    margin-left: 260px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: #00000091;
+    transition: margin-left 0.3s ease;
+}
+#profil > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--card-bg);
+    width: 70%;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+#profil .disconnect {
+    display: flex;
+    align-items: center;
+    /* background-color: var(--danger-background-color); */
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    border-radius: var(--border-radius);
     cursor: pointer;
-    padding: 10px;
+    margin-top: 3rem;
+    width: 40%;
+    transition: all 0.3s ease;
+}
+#profil .disconnect .stat-icon {
+    background-color: var(--bg-color);
+}
+#profil .disconnect:hover {
+    background-color: var(--danger-color);
+    color: var(--bg-color);
+}
+#profil form {
+    display: flex;
+    flex-direction: column;
+}
+#profil form input {
+    padding: 7px;
+    border: none;
+    background-color: #f2f5fa79;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+#profil form input:focus {
+    outline: none;
+}
+#profil form input[type="submit"] {
+    font-weight: bold;
+    background: var(--secondary-color);
+    color: var(--card-bg);
+    border: none;
+    border-radius: var(--border-radius);
+    margin-top: 15px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#profil form > div {
+    position: relative;
+}
+#profil form svg {
+    width: 34px;
+    height: 34px;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    border-radius: var(--border-radius);
+    transform: translateY(1%);
+}
+#profil form svg:hover {
+    background-color: #e2e8f0;
+}
+#profil form label {
+    margin-top: 1rem;
 }
 #profil h3 {
     font-size: 1rem;
 }
 #profil div.stat-icon {
     width: 40px;
-    height: 40px;
+    height: 35px;
 }
 #information {
     background-color: var(--card-bg);
@@ -413,7 +505,7 @@ body {
         transform: translateX(0);
     }
 
-    .main-content {
+    .main-content, #profil {
         margin-left: 0;
         padding: 1.5rem;
     }
@@ -446,5 +538,13 @@ body {
 
     .dashboard-grid {
         grid-template-columns: 1fr;
+    }
+
+    #profil > div {
+        width: 100%;
+    }
+
+    #profil .disconnect {
+        width: 63%;
     }
 }
